@@ -28,15 +28,6 @@ def larrysArray(A):
     return "YES"
 
 
-# Problem Solving - Lonely Integer - Easy
-def lonelyinteger(a):
-    found = {}
-    for i in a:
-        if not i in found: found[i] = 1
-        else: found[i] += 1
-    for i in found.keys():
-        if found[i] == 1: return i
-
 
 # Problem Solving - Absolute Permutation - Medium
 def absolutePermutation(n, k):
@@ -1533,4 +1524,14 @@ num1 = int(input())
 num2 = int(input())
 res = solveMeFirst(num1,num2)
 print(res)
+
+
+# Problem Solving - Lonely Integer - Easy
+def lonelyinteger(a):
+    found = {}
+    for i in a:
+        if not i in found: found[i] = 1
+        else: found[i] += 1
+    for i in found.keys():
+        if found[i] == 1: return i
 
