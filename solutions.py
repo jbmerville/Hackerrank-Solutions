@@ -1,32 +1,3 @@
- 
-# Problem Solving - Larry's Array - Medium
-def larrysArray(A):
-    search = 1
-    i = 0
-    while i < len(A):
-        while i< len(A) and A[i] == search:
-            i = search
-            search += 1
-        i += 1
-        if i < len(A) and A[i] == search:
-            k = i
-            while k > search: 
-                s = A[k-2]    
-                A[k-2] = A[k]
-                A[k] = A[k-1]
-                A[k-1] = s
-                k -= 2
-            if k+1 < len(A) and k > search-1:
-                s = A[k-1]    
-                A[k-1] = A[k]
-                A[k] = A[k+1]
-                A[k+1] = s  
-            i = search 
-            search += 1
-
-    if A[-2] > A[-1] or search < len(A) : return "NO"
-    return "YES"
-
 
 
 # Problem Solving - Absolute Permutation - Medium
@@ -1534,4 +1505,55 @@ def lonelyinteger(a):
         else: found[i] += 1
     for i in found.keys():
         if found[i] == 1: return i
+
+
+# Problem Solving - Larry's Array - Medium
+import math
+import os
+import random
+import re
+import sys
+
+def larrysArray(A):
+    search = 1
+    i = 0
+    while i < len(A):
+        while i< len(A) and A[i] == search:
+            i = search
+            search += 1
+        i += 1
+        if i < len(A) and A[i] == search:
+            k = i
+            while k > search: 
+                s = A[k-2]    
+                A[k-2] = A[k]
+                A[k] = A[k-1]
+                A[k-1] = s
+                k -= 2
+            if k+1 < len(A) and k > search-1:
+                s = A[k-1]    
+                A[k-1] = A[k]
+                A[k] = A[k+1]
+                A[k+1] = s  
+            i = search 
+            search += 1
+
+    if A[-2] > A[-1] or search < len(A) : return "NO"
+    return "YES"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input())
+
+    for t_itr in range(t):
+        n = int(input())
+
+        A = list(map(int, input().rstrip().split()))
+
+        result = larrysArray(A)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
 
