@@ -1547,3 +1547,17 @@ def recursiveCalc(x, n, number):
     if calc == x: return 1
     return recursiveCalc(x, n, number+1) + recursiveCalc(x-calc, n, number+1)
 
+
+# Problem Solving - Maximum Perimeter Triangle - Easy
+def maximumPerimeterTriangle(sticks):
+    length = len(sticks)
+    sticks.sort()
+    arr = []
+    for a in range(length):
+        for b in range(a + 1, length):
+            for c in range(b + 1, length):
+                if not sticks[c] >= sticks[a] + sticks[b]: arr.append([sticks[a], sticks[b], sticks[c]])   
+    if len(arr) == 0: return [-1]
+    return max(arr, key= lambda  x: x[0] +x[1] + x[2])
+        
+
