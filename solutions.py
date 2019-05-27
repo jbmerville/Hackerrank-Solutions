@@ -1,3 +1,32 @@
+ 
+# Problem Solving - Larry's Array - Medium
+def larrysArray(A):
+    search = 1
+    i = 0
+    while i < len(A):
+        while i< len(A) and A[i] == search:
+            i = search
+            search += 1
+        i += 1
+        if i < len(A) and A[i] == search:
+            k = i
+            while k > search: 
+                s = A[k-2]    
+                A[k-2] = A[k]
+                A[k] = A[k-1]
+                A[k-1] = s
+                k -= 2
+            if k+1 < len(A) and k > search-1:
+                s = A[k-1]    
+                A[k-1] = A[k]
+                A[k] = A[k+1]
+                A[k+1] = s  
+            i = search 
+            search += 1
+
+    if A[-2] > A[-1] or search < len(A) : return "NO"
+    return "YES"
+
 
 
 # Problem Solving - Absolute Permutation - Medium
@@ -1507,53 +1536,32 @@ def lonelyinteger(a):
         if found[i] == 1: return i
 
 
-# Problem Solving - Larry's Array - Medium
+# Problem Solving - The Power Sum - Medium
 import math
 import os
 import random
 import re
 import sys
 
-def larrysArray(A):
-    search = 1
-    i = 0
-    while i < len(A):
-        while i< len(A) and A[i] == search:
-            i = search
-            search += 1
-        i += 1
-        if i < len(A) and A[i] == search:
-            k = i
-            while k > search: 
-                s = A[k-2]    
-                A[k-2] = A[k]
-                A[k] = A[k-1]
-                A[k-1] = s
-                k -= 2
-            if k+1 < len(A) and k > search-1:
-                s = A[k-1]    
-                A[k-1] = A[k]
-                A[k] = A[k+1]
-                A[k+1] = s  
-            i = search 
-            search += 1
-
-    if A[-2] > A[-1] or search < len(A) : return "NO"
-    return "YES"
+def powerSum(X, N):
+    return recursiveCalc(X, N, 1)
+    
+def recursiveCalc(x, n, number):
+    calc = math.pow(number, n)
+    if calc > x: return 0
+    if calc == x: return 1
+    return recursiveCalc(x, n, number+1) + recursiveCalc(x-calc, n, number+1)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    t = int(input())
+    X = int(input())
 
-    for t_itr in range(t):
-        n = int(input())
+    N = int(input())
 
-        A = list(map(int, input().rstrip().split()))
+    result = powerSum(X, N)
 
-        result = larrysArray(A)
-
-        fptr.write(result + '\n')
+    fptr.write(str(result) + '\n')
 
     fptr.close()
 
