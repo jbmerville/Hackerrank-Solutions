@@ -1591,3 +1591,29 @@ def getMinimumCost(k, c):
         index = (index + 1) % len(arr) 
     return sum(i[0] for i in arr)
 
+
+# Problem Solving - Beautiful Pairs - Easy
+def beautifulPairs(A, B):
+    nbA = {}
+    for i in range(len(A)):
+        if A[i] not in nbA: nbA[A[i]] = 1
+        else: nbA[A[i]] += 1
+    nbB = {}
+    for i in range(len(B)):
+        if B[i] not in nbB: nbB[B[i]] = 1
+        else: nbB[B[i]] += 1
+    pairs = 0
+    for i in nbA.keys():
+        if i in nbB:
+            if nbB[i] >= nbA[i]: pairs += nbA[i]
+            else: pairs += nbB[i]
+    same =  True
+    for i in nbB.keys():
+        if i in nbA:
+            if not nbB[i] == nbA[i]: same = False
+        else: same = False
+    if same: pairs -= 1
+    else: pairs += 1
+    return pairs
+            
+
