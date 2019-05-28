@@ -1617,3 +1617,15 @@ def beautifulPairs(A, B):
     return pairs
             
 
+
+# Problem Solving - Sherlock and The Beast - Easy
+def decentNumber(n):
+    fives = "555"
+    threes = "33333"
+    nb = []
+    for i in range(n//5 + 1):
+        if i*5 + ((n-i*5)//3) * 3 == n:
+            nb.append([i, (n-i*5)//3]) 
+    if len(nb) == 0: print(-1)
+    else: print(fives*nb[0][1] + threes*nb[0][0])
+
