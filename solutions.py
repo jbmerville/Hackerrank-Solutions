@@ -1579,3 +1579,15 @@ def candies(n, arr):
                 candies[b] = candies[b+1] + 1
     return sum(i for i in candies)
 
+
+# Problem Solving - Greedy Florist - Medium
+def getMinimumCost(k, c):
+    arr = [[0,0] for i in range(k)] 
+    index = 0
+    c.sort()
+    for i in range(len(c)-1, -1, -1):
+        arr[index][0] += (arr[index][1]+1) * c[i]
+        arr[index][1] += 1
+        index = (index + 1) % len(arr) 
+    return sum(i[0] for i in arr)
+
