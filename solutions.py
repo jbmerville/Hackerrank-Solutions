@@ -1561,3 +1561,21 @@ def maximumPerimeterTriangle(sticks):
     return max(arr, key= lambda  x: x[0] +x[1] + x[2])
         
 
+
+# Problem Solving - Candies - Medium
+def candies(n, arr):
+    numbers = {}
+    candies = [0] * len(arr)
+    for i in range(len(arr)):
+        if arr[i] not in numbers: numbers[arr[i]] = [i]
+        else: numbers[arr[i]].append(i)
+    numbers = dict(sorted(numbers.items()))
+    for a in numbers.keys():
+        for b in numbers[a]:
+            candies[b] = 1
+            if b > 0 and arr[b-1] < arr[b]:
+                candies[b] = candies[b-1] + 1
+            if b < len(arr)-1 and arr[b+1] < arr[b] and candies[b] <= candies[b+1]:
+                candies[b] = candies[b+1] + 1
+    return sum(i for i in candies)
+
