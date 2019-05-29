@@ -1629,3 +1629,21 @@ def decentNumber(n):
     if len(nb) == 0: print(-1)
     else: print(fives*nb[0][1] + threes*nb[0][0])
 
+
+#  - Minimum Swaps 2 - Medium
+def minimumSwaps(arr):
+    index = {}
+    for i in range(len(arr)):
+        index[arr[i]] = i
+    index = dict(sorted(index.items()))      
+    count = 0      
+    for i in index.keys():
+        if not arr[i-1] == i:
+            count += 1
+            nb = arr[i-1]
+            arr[i-1] = i
+            arr[index[i]] = nb
+            index[nb] = index[i]
+            index[i] = i-1
+    return count
+
