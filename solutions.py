@@ -1647,3 +1647,13 @@ def minimumSwaps(arr):
             index[i] = i-1
     return count
 
+
+# Python - Write a function - Medium
+def is_leap(year):
+    if (year % 4 == 0 and not year % 100 == 0) or year % 400 == 0:
+        return True 
+    return False
+    
+        
+    return leap
+
