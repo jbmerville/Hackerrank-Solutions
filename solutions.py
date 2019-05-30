@@ -130,9 +130,8 @@ def isValid(s):
     for i in ltr.keys():
         if ltr[i] not in nb: nb[ltr[i]] = 1
         else: nb[ltr[i]] += 1
-    print(nb)
         if len(nb)>1:
-        oneTwo = [list(nb.keys())[0], nb[list(nb.keys())[0]], list(nb.keys())[1], nb[list(nb.keys())[1]]]
+            oneTwo = [list(nb.keys())[0], nb[list(nb.keys())[0]], list(nb.keys())[1], nb[list(nb.keys())[1]]]
         print(oneTwo)
         if len(nb) > 2: result = "NO"
         elif  oneTwo[1] > 1 and oneTwo[3] > 1: result = "NO"
@@ -157,7 +156,7 @@ def introTutorial(V, arr):
 
 # Problem Solving - Strong Password - Easy
 def minimumNumber(n, password):
-        count = 0
+    count = 0
     if re.search("\d", password): count +=1
     if re.search("[a-z]", password): count +=1
     if re.search("[A-Z]", password): count +=1
@@ -349,7 +348,7 @@ def weightedUniformStrings(s, queries):
     for i in queries:
         found = False
         for a in weight.keys():
-                        if (i/a)%1 == 0.0 and i <= a*weight[a]: 
+            if (i/a)%1 == 0.0 and i <= a*weight[a]: 
                 found = True         
         if found: result.append("Yes")
         else: result.append("No")
@@ -930,16 +929,16 @@ def acmTeam(topic):
     for i in topic:
         bit.append(int('0b' + i, 2))
         for a in range(len(bit)):
-        for b in range(a + 1, len(bit)):
-            count = 0
-            nb = bit[a] | bit[b]
-            while nb:
-                count += nb & 1
-                nb>>=1
-            if count > max_topics: 
-                max_topics = count
-                max_way = 1
-            elif count == max_topics: max_way += 1
+            for b in range(a + 1, len(bit)):
+                count = 0
+                nb = bit[a] | bit[b]
+                while nb:
+                    count += nb & 1
+                    nb>>=1
+                if count > max_topics: 
+                    max_topics = count
+                    max_way = 1
+                elif count == max_topics: max_way += 1
     return [max_topics, max_way]
     
         
@@ -950,8 +949,7 @@ def acmTeam(topic):
 # Problem Solving - Queen's Attack II - Medium
 def queensAttack(n, k, r_q, c_q, obstacles):
     count = 2*(n-1) + 3* min(n-c_q, n-r_q, c_q-1, r_q-1) + max(n-c_q, n-r_q, c_q-1, r_q-1) 
-    print("-----")
-    print("init count:%d" %count)
+
     bot_r = [0, 0]
     bot_l = [0, 0]
     top_r = [n+1, n+1]
@@ -966,59 +964,55 @@ def queensAttack(n, k, r_q, c_q, obstacles):
         r = abs(obstacles[i][0] - r_q)
         c = abs(obstacles[i][1] - c_q)
         if r ==  c:
-            if obstacles[i][0] > r_q and obstacles[i][1] < c_q:                 if top_l[0] == 0 and top_l[1] == 0: 
+            if obstacles[i][0] > r_q and obstacles[i][1] < c_q:                 
+                if top_l[0] == 0 and top_l[1] == 0: 
                     top_l[0] = obstacles[i][0]
                     top_l[1] = obstacles[i][1]
                 if r < abs(top_l[0] - r_q):
                     top_l[0] = obstacles[i][0]
                     top_l[1] = obstacles[i][1]
-            if obstacles[i][0] > r_q and obstacles[i][1] > c_q:                 if top_r[0] == 0 and top_r[1] == 0: 
+            if obstacles[i][0] > r_q and obstacles[i][1] > c_q:                 
+                if top_r[0] == 0 and top_r[1] == 0: 
                     top_r[0] = obstacles[i][0]
                     top_r[1] = obstacles[i][1]
                 if r < abs(top_r[0] - r_q):
                     top_r[0] = obstacles[i][0]
                     top_r[1] = obstacles[i][1]
-            if obstacles[i][0] < r_q and obstacles[i][1] < c_q:                 if bot_l[0] == 0 and bot_l[1] == 0: 
+            if obstacles[i][0] < r_q and obstacles[i][1] < c_q:                 
+                if bot_l[0] == 0 and bot_l[1] == 0: 
                     bot_l[0] = obstacles[i][0]
                     bot_l[1] = obstacles[i][1]
                 if r < abs(bot_l[0] - r_q):
                     bot_l[0] = obstacles[i][0]
                     bot_l[1] = obstacles[i][1]
-            if obstacles[i][0] < r_q and obstacles[i][1] > c_q:                 if bot_r[0] == 0 and bot_r[1] == 0: 
+            if obstacles[i][0] < r_q and obstacles[i][1] > c_q:                 
+                if bot_r[0] == 0 and bot_r[1] == 0: 
                     bot_r[0] = obstacles[i][0]
                     bot_r[1] = obstacles[i][1]
                 if r < abs(bot_r[0] - r_q):
                     bot_r[0] = obstacles[i][0]
                     bot_r[1] = obstacles[i][1]
-        elif obstacles[i][0] == r_q and obstacles[i][1] < c_q:             if left == 0:
+        elif obstacles[i][0] == r_q and obstacles[i][1] < c_q:             
+            if left == 0:
                 left = obstacles[i][1]
             elif left < obstacles[i][1]: left = obstacles[i][1]
-        elif obstacles[i][0] == r_q and obstacles[i][1] > c_q:             if right == n:
+        elif obstacles[i][0] == r_q and obstacles[i][1] > c_q:             
+            if right == n:
                 right = obstacles[i][1]
             elif right > obstacles[i][1]: right = obstacles[i][1]
-        elif obstacles[i][1] == c_q and obstacles[i][0] > r_q:             if top == n:
+        elif obstacles[i][1] == c_q and obstacles[i][0] > r_q:             
+            if top == n:
                 top = obstacles[i][0]
             elif top > obstacles[i][0]: top = obstacles[i][0]
-        elif obstacles[i][1] == c_q and obstacles[i][0] < r_q:             if bottom == 0:
+        elif obstacles[i][1] == c_q and obstacles[i][0] < r_q:             
+            if bottom == 0:
                 bottom = obstacles[i][0]
             elif bottom < obstacles[i][0]: bottom = obstacles[i][0]  
-    print("----")       
-    print("closest dia:")
-    print("bot left:%s | bot right:%s | top left:%s | top right:%s " % (str(bot_l), str(bot_r), str(top_l), str(top_r)))   
     count -= min(bot_l[0], bot_l[1])
     count -= min(n-top_l[0] + 1, top_l[1])
-    print("bot left:%d" % (min(bot_l[0], bot_l[1]) ))
-    print("bot right:%d" % (min(bot_r[0],n-bot_r[1] + 1)))
-    print("top left:%d" % (min(n-top_l[0] +1, top_l[1])))
-    print("top right:%d" % (min(n-top_r[0] +1, n-top_r[1] +1)))
     count -= min(n-top_r[0] + 1, n-top_r[1] + 1) 
-    count -= min(bot_r[0],n-bot_r[1] + 1) 
-    print("count after dia:%d" %count )
-    print("----")
-    print("closest row/col:")
-    print("left:%d | right:%d | top:%d | bottom:%d " % (left, right, top, bottom))   
+    count -= min(bot_r[0],n-bot_r[1] + 1)  
     count -= left + (n-right+1) + (n-top+1) + bottom
-    print("count after dia:%d" %count )
 
     return count
 
@@ -1459,7 +1453,8 @@ def miniMaxSum(arr):
 # Problem Solving - Staircase - Easy
 def staircase(n):
     space = " "
-    hashtage ="    for i in range(1, n+1):
+    hashtage =" "
+    for i in range(1, n+1):
         print(space*(n-i) + hashtage*i)
 
 
@@ -1655,5 +1650,4 @@ def is_leap(year):
     return False
     
         
-    return leap
 
