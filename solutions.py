@@ -1651,3 +1651,14 @@ def is_leap(year):
     
         
 
+
+# Python - Capitalize! - Easy
+def solve(s):
+    s = re.compile("(\s+)").split(s)
+    print(s)
+    name = ""
+    for i in s:
+        name += i[0].capitalize() + i[1:]
+    return name
+            
+
