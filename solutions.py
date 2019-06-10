@@ -1662,3 +1662,21 @@ def solve(s):
     return name
             
 
+
+# Python - The Minion Game - Medium
+def minion_game(string):
+    vowels = ['A', 'O', 'E', 'I', 'U']
+    A = 0
+    B = 0
+    for i in range(len(string)):
+        if string[i] in vowels: A += len(string) - i
+        else: B += len(string) - i
+
+    if A < B:
+        print("Stuart %d" % B)
+    elif A > B:
+        print("Kevin %d" % A)
+    else:
+        print("Draw")
+    
+
