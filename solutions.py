@@ -1680,3 +1680,16 @@ def minion_game(string):
         print("Draw")
     
 
+
+# Python - Merge the Tools! - Medium
+def merge_the_tools(string, k):
+        nbParts = len(string) // k
+    parts = [""] * nbParts
+    for i in range(0, len(string), k):
+        parts[i//k] = string[i:i+k]
+    for p in parts:
+        letters = []
+        for l in p:
+            if l not in letters: letters.append(l)
+        print("".join(letters))
+
