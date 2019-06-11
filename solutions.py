@@ -1693,3 +1693,29 @@ def merge_the_tools(string, k):
             if l not in letters: letters.append(l)
         print("".join(letters))
 
+
+# Python - No Idea! - Medium
+def binarySearch(arr, nb):
+    left = 0
+    right = len(arr) - 1
+    while left <= right:
+        middle = ((right - left) // 2) + left
+        if arr[middle] == nb: return True
+        elif arr[middle] > nb: right = middle - 1
+        else: left = middle + 1
+    return False
+
+if __name__ == "__main__":
+    input()
+    n = list(map(int, input().split(" ")))
+    A = list(map(int, input().split(" ")))
+    B = list(map(int, input().split(" ")))
+    happiness = 0
+    n.sort()
+    A.sort()
+    B.sort()
+    for i in n:
+        if binarySearch(A, i): happiness += 1
+        if binarySearch(B, i): happiness -= 1
+    print(happiness)
+
