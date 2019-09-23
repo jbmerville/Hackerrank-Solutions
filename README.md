@@ -1,2 +1,2 @@
-# HackerRank_My_Solutions
-My solutions to the problems on HackerRank in python
+# Hackerrank-Solutions
+A repository of some of the solution I wrote when solving problems on Hackerrank.
